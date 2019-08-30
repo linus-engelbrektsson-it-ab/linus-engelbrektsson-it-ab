@@ -33,7 +33,7 @@ export const renderStatic = ({
         </html>
         <body>
           <div id="${containerId}">
-            ${ReactDOMServer.renderToString(<App />)}
+            ${ReactDOMServer.renderToStaticMarkup(<App />)}
           </div>
         </body>
       `.split('\n').map(s => s.trim()).join(''),

@@ -1,22 +1,23 @@
-import { existsSync, writeFileSync, mkdirSync, statSync, rmdirSync } from 'fs';
+import { mkdirSync, writeFileSync } from 'fs';
 import * as path from 'path';
 import { renderStatic } from './src/render-static';
+import { clean } from './clean';
 
-const outDir = './docs';
+const build = async () => {
+  const outDir = './docs';
 
-const result = renderStatic({
-  title: 'Linus Engelbrektsson IT AB',
-  containerId: 'app',
-});
+  const result = renderStatic({
+    title: 'Linus Engelbrektsson IT AB',
+    containerId: 'app',
+  });
 
-const haveBuildDir = existsSync(outDir);
+  await clean(outDir);
 
-if (haveBuildDir) {
-  rmdirSync(outDir);
-}
+  mkdirSync(outDir);
 
-mkdirSync(outDir);
+  result.forEach(file => {
+    writeFileSync(path.join(outDir, file.path), file.content);
+  });
+};
 
-result.forEach(file => {
-  writeFileSync(path.join(outDir, file.path), file.content);
-});
+build();
