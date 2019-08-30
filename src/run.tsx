@@ -1,5 +1,6 @@
+import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { App } from './index';
+import { App } from './app';
 
 export const run = () => {
   const existingContainer = document.querySelector('#app');

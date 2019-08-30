@@ -8,7 +8,7 @@ export const Container = ({
 ;
 
 export const Paragraph = ({ children }: React.PropsWithChildren<{}>) =>
-  <p className='paragraph'>{ children }</p>
+  <div className='paragraph'>{ children }</div>
 ;
 
 export const Header = () =>
