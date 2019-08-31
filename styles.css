@@ -18,21 +18,27 @@ html, body, #app {
 .tooltip {
   display: block;
   opacity: 0;
+  transform: scaleY(0);
+  transform-origin: 0 0;
   position: absolute;
   top: 2rem;
   left: 0;
-  width: 20rem;
+  width: 60vw;
+  max-width: 20rem;
   background-color: #777;
   color: #CCC;
   padding: 1rem;
-  transition: opacity 0.2s;
-  transition-delay: 0;
+  transition: opacity 0.2s, transform 0.3s;
+  transition-delay: 0s;
+  transition-timing-function: ease-in-out;
   pointer-events: none;
 }
 
 *:hover > .tooltip {
   opacity: 1;
+  transition: opacity 0.3s, transform 0.2s;
   transition-delay: 0.6s;
+  transform: scaleY(1);
 }
 
 .app-container {
@@ -41,12 +47,6 @@ html, body, #app {
   background-color: #DDD;
   min-height: 100%;
   margin: 0 4rem;
-}
-
-@media screen and (max-width: 1000px) {
-  .app-container {
-    margin: 0;
-  }
 }
 
 .container {
@@ -129,4 +129,14 @@ a:visited {
 
 a:focus {
   color: inherit;
+}
+
+@media screen and (max-width: 1000px) {
+  .app-container {
+    margin: 0;
+  }
+
+  *:hover > .tooltip {
+    transition-delay: 0s;
+  }
 }
