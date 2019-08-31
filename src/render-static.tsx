@@ -23,11 +23,12 @@ export const renderStatic = ({
   return [
     {
       path: 'index.html',
-      content: ` 
+      content: `
         <!DOCTYPE html>
         <html>
           <head>
             <title>${title}</title>
+            <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
             <link rel="stylesheet" href="styles.css">
           </head>
         </html>
