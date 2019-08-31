@@ -1,23 +1,21 @@
-import { mkdirSync, writeFileSync } from 'fs';
+import { writeFile as _writeFile } from 'fs';
+import { promisify } from 'util';
 import * as path from 'path';
 import { renderStatic } from './src/render-static';
-import { clean } from './clean';
+
+const writeFile = promisify(_writeFile);
 
 const build = async () => {
-  const outDir = './docs';
-
   const result = renderStatic({
     title: 'Linus Engelbrektsson IT AB',
     containerId: 'app',
   });
 
-  await clean(outDir);
-
-  mkdirSync(outDir);
-
-  result.forEach(file => {
-    writeFileSync(path.join(outDir, file.path), file.content);
-  });
+  await Promise.all(
+    result.map(file =>
+      writeFile(file.path, file.content)
+    )
+  );
 };
 
 build();

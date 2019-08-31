@@ -7,8 +7,15 @@ export const Container = ({
   <div className={ `container ${className}` }>{ children }</div>
 ;
 
-export const Paragraph = ({ children }: React.PropsWithChildren<{}>) =>
-  <div className='paragraph'>{ children }</div>
+export const Paragraph = ({
+  children,
+  className = '',
+}: React.PropsWithChildren<{ className?: string }>) =>
+  <div className={ `paragraph ${className}` }>{ children }</div>
+;
+
+export const Highlight = ({ children }: React.PropsWithChildren<{}>) =>
+  <span className='highlight'>{ children }</span>
 ;
 
 export const Header = () =>
@@ -18,19 +25,65 @@ export const Header = () =>
   </Container>
 ;
 
-export const MainContent = () =>
-  <Container className='main-container'>
-    <Paragraph>Lorem ipsum</Paragraph>
+export const SideContent = () =>
+  <Container className='side-container'>
+    <a href="/#1">1</a>
   </Container>
+;
+
+export const Tooltip = ({ children }: React.PropsWithChildren<{}>) =>
+  <div className='tooltip'>{ children }</div>
+;
+
+export const SoftwareDeveloperTooltip = ({ children }: React.PropsWithChildren<{}>) =>
+  <>
+    <Tooltip>
+      <>I started to get interested in coding when I was about 10 years old, </>
+      I wanted to become a game developer.
+    </Tooltip>
+    { children }
+  </>
+;
+
+export const WebDevelopmentTooltip = ({ children }: React.PropsWithChildren<{}>) =>
+  <>
+    <Tooltip>
+      <Paragraph>In recent years, I have been studying and working mostly with web development.</Paragraph>
+      <Paragraph>I have learned modern web development techniques such as SPA and Restful API.</Paragraph>
+    </Tooltip>
+    { children }
+  </>
+;
+
+export const Introduction = () =>
+  <>
+    <Paragraph>Hi!</Paragraph>
+    <Paragraph>
+      I am a <Highlight><SoftwareDeveloperTooltip>software developer </SoftwareDeveloperTooltip></Highlight>
+      who specializes in <Highlight><WebDevelopmentTooltip>web development</WebDevelopmentTooltip></Highlight>.
+    </Paragraph>
+  </>
+;
+
+export const MainContent = () =>
+  <div style={{ display: 'flex', flexGrow: 1 }}>
+    <Container className='main-container'>
+      <Introduction />
+    </Container>
+  </div>
+;
+
+export const FooterText = ({ children }: React.PropsWithChildren<{}>) =>
+  <Paragraph className='footer-text'>{ children }</Paragraph>
 ;
 
 export const Footer = () =>
   <Container className='footer-container'>
-    <Paragraph>Linus Engelbrektsson IT AB</Paragraph>
-    <Paragraph>
+    <FooterText>Linus Engelbrektsson IT AB</FooterText>
+    <FooterText>
       <label>E-mail:</label>
-      <p><a href='mailto:linus.engelbrektsson.it@gmail.com'>linus.engelbrektsson.it@gmail.com</a></p>
-    </Paragraph>
+      <label><a href='mailto:linus.engelbrektsson.it@gmail.com'>linus.engelbrektsson.it@gmail.com</a></label>
+    </FooterText>
   </Container>
 ;
 

@@ -28,7 +28,7 @@ export const renderStatic = ({
         <html>
           <head>
             <title>${title}</title>
-            <link rel="stylesheet" href="/styles.css">
+            <link rel="stylesheet" href="styles.css">
           </head>
         </html>
         <body>
