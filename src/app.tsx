@@ -22,6 +22,7 @@ export const Header = () =>
   <Container className='header-container'>
     <h1 className='header'>Linus Engelbrektsson IT AB</h1>
     <h2 className='sub-header'>Software Developer</h2>
+    <NavigationMenu />
   </Container>
 ;
 
@@ -33,6 +34,58 @@ export const SideContent = () =>
 
 export const Tooltip = ({ children }: React.PropsWithChildren<{}>) =>
   <div className='tooltip'>{ children }</div>
+;
+
+export type MenuItem<Extend = unknown> = Extend & {
+  render(this: Extend): React.ReactNode;
+};
+
+export type MenuProps<Item extends MenuItem> = {
+  items: Item[];
+};
+
+export const Menu = <Item extends MenuItem>({ items }: MenuProps<Item>) =>
+  <div className='menu'>{ items.map(item =>
+    item.render()
+  ) }</div>
+;
+
+type NavigationMenuItemExtend = {
+  label: string;
+  link: string;
+  className: string;
+};
+
+type NavigationMenuItem = MenuItem<NavigationMenuItemExtend>;
+
+const renderNavigationMenuItem = (item: NavigationMenuItemExtend) =>
+  <a key={ item.link } href={`#${item.link}`}>
+    <label className={`menu-item ${item.className} get-active`} data-path={ item.link }>
+      <div className='slide' />
+      <div className='text'>{ item.label }</div>
+      <div className='transparent'>{ item.label }</div>
+    </label>
+  </a>
+;
+
+const createNavigationMenuItem = (
+  label: string,
+  link: string,
+  className: string,
+): NavigationMenuItem => ({
+  render() { return renderNavigationMenuItem(this); },
+  label,
+  link,
+  className,
+});
+
+export const NavigationMenu = () =>
+  <Menu items={[
+    [ 'Introduction', '/introduction', 'yellow' ],
+    [ 'Contact', '/contact', 'red' ],
+  ].map(([label, link, className]) =>
+    createNavigationMenuItem(label, link, className)
+  )} />
 ;
 
 export const SoftwareDeveloperTooltip = ({ children }: React.PropsWithChildren<{}>) =>
@@ -65,10 +118,25 @@ export const Introduction = () =>
   </>
 ;
 
+export const Contact = () =>
+  <>
+    <Paragraph>E-mail: <a href='mailto:linus.engelbrektsson.it@gmail.com'>linus.engelbrektsson.it@gmail.com</a></Paragraph>
+  </>
+;
+
+export type RouteProps = React.PropsWithChildren<{
+  path: string;
+}>;
+
+export const Route = ({ children, path }: RouteProps) =>
+  <div className='route' data-path={ path }>{ children }</div>
+;
+
 export const MainContent = () =>
   <div style={{ display: 'flex', flexGrow: 1 }}>
     <Container className='main-container'>
-      <Introduction />
+      <Route path='/introduction'><Introduction /></Route>
+      <Route path='/contact'><Contact /></Route>
     </Container>
   </div>
 ;
