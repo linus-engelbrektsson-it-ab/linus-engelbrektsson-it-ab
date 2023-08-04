@@ -4,21 +4,24 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "parcel src/index.html",
-    "build": "ts-node ./build.ts",
+    "start": "vite src",
+    "build": "ts-node ./scripts/build.ts",
+    "build:vite": "ts-node ./scripts/vite-build.ts",
+    "clean": "ts-node ./scripts/clean.ts",
+    "clean:vite": "ts-node ./scripts/vite-clean.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@types/node": "^12.7.3",
-    "@types/react": "^16.9.2",
-    "@types/react-dom": "^16.9.0",
-    "parcel-bundler": "^1.12.3",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "rimraf": "^3.0.0",
-    "ts-node": "^8.3.0",
-    "typescript": "^3.6.2"
+    "@types/node": "^18.16.0",
+    "@types/react": "^18.2.18",
+    "@types/react-dom": "^18.2.7",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "rimraf": "^5.0.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.6",
+    "vite": "^4.4.8"
   }
 }

@@ -1,3 +1,5 @@
-import { run } from './run';
+import { run } from "./run";
 
-run();
+document.addEventListener("DOMContentLoaded", () => {
+    run();
+});

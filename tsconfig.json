@@ -1,5 +1,12 @@
 {
+  "include": ["scripts/**/*", "src/**/*"],
   "compilerOptions": {
-    "jsx": "react"
+    "target": "ESNext",
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "strict": true,
+    "jsx": "react",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
   }
 }
