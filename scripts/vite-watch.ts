@@ -1,3 +1,3 @@
 import { viteBuild } from "./lib/vite-build";
 
-viteBuild();
+viteBuild(true);

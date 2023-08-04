@@ -1,8 +1,8 @@
 import React, { FC } from "react";
-import { Paragraph } from "./paragraph";
-import { Highlight } from "./highlight";
-import { SoftwareDeveloperTooltip } from "./software-developer-tooltip";
-import { WebDevelopmentTooltip } from "./web-development-tooltip";
+import { Paragraph } from "../components/paragraph";
+import { Highlight } from "../components/highlight";
+import { SoftwareDeveloperTooltip } from "../components/software-developer-tooltip";
+import { WebDevelopmentTooltip } from "../components/web-development-tooltip";
 
 export type IntroductionProps = {};
 

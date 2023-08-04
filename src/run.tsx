@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { App } from './app';
-import { initialize } from './static-script';
+import { createRouter } from './lib/router';
 
 export const run = () => {
   const existingContainer = document.querySelector('#app');
@@ -14,5 +14,5 @@ export const run = () => {
 
   ReactDOM.render(<App />, container);
 
-  initialize();
+  createRouter();
 };

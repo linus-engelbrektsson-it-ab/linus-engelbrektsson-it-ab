@@ -1,8 +1,8 @@
 import React, { FC } from "react";
 import { Container } from "./container";
 import { Route } from "./route";
-import { Introduction } from "./introduction";
-import { Contact } from "./contact";
+import { Introduction } from "../pages/introduction";
+import { Contact } from "../pages/contact";
 
 export type MainContentProps = {};
 

@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Paragraph } from "./paragraph";
+import { Paragraph } from "../components/paragraph";
 
 export type ContactProps = {};
 
