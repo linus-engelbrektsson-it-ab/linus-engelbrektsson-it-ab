@@ -1,9 +1,10 @@
 import { build } from "vite";
 import type { RollupOutput } from "rollup";
 import { outDir } from "./vite-config";
+import { readFile, writeFile } from "fs/promises";
 
 const viteBuild = async () => {
-    const output = (await build({
+    (await build({
         root: "src",
         base: "",
         build: {
@@ -19,12 +20,7 @@ const viteBuild = async () => {
             },
         ],
     })) as RollupOutput | RollupOutput[];
-
-    if (output instanceof Array) {
-        console.log("[]:", output.length);
-    } else {
-        console.log("_:", output.output.length);
-    }
+    await writeFile(`${outDir}/CNAME`, await readFile("CNAME"));
 };
 
 viteBuild();
