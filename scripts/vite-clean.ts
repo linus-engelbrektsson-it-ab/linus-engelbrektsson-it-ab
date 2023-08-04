@@ -1,7 +1,8 @@
 import { rimraf } from "rimraf";
+import { outDir } from "./vite-config";
 
 const viteClean = async () => {
-    rimraf("dist");
+    rimraf(outDir);
 };
 
 viteClean();

@@ -1,12 +1,13 @@
 import { build } from "vite";
 import type { RollupOutput } from "rollup";
+import { outDir } from "./vite-config";
 
 const viteBuild = async () => {
     const output = (await build({
         root: "src",
         base: "",
         build: {
-            outDir: "../dist",
+            outDir: `../${outDir}`,
             assetsDir: ".",
         },
         plugins: [
