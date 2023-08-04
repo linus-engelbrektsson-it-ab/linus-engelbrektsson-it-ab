@@ -5,10 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "vite src",
-    "build": "ts-node ./scripts/build.ts",
-    "build:vite": "ts-node ./scripts/vite-build.ts",
-    "clean": "ts-node ./scripts/clean.ts",
-    "clean:vite": "ts-node ./scripts/vite-clean.ts",
+    "build": "ts-node ./scripts/vite-build.ts",
+    "clean": "ts-node ./scripts/vite-clean.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
